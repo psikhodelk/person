@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Market Leader Mega Trainer</title>
+    <style>
+        body { font-family: 'Segoe UI', sans-serif; line-height: 1.6; max-width: 1000px; margin: 0 auto; padding: 20px; background-color: #f4f7f9; }
+        h1 { color: #1a3a5f; text-align: center; margin-bottom: 30px; }
+        .tabs { display: flex; justify-content: center; margin-bottom: 20px; gap: 10px; }
+        .tab-btn { padding: 10px 20px; cursor: pointer; border: none; background: #d1d8e0; border-radius: 5px; font-weight: bold; transition: 0.3s; }
+        .tab-btn.active { background: #1a3a5f; color: white; }
+        .test-content { display: none; background: white; padding: 30px; border-radius: 15px; box-shadow: 0 5px 15px rgba(0,0,0,0.1); }
+        .test-content.active { display: block; }
+        .q-row { margin-bottom: 15px; display: flex; align-items: center; border-bottom: 1px solid #f0f0f0; padding-bottom: 8px; }
+        .q-num { font-weight: bold; color: #1a3a5f; width: 30px; }
+        input { padding: 8px; border: 2px solid #ddd; border-radius: 5px; width: 180px; margin-left: 10px; transition: 0.3s; outline: none; }
+        .correct { background-color: #d4edda !important; border-color: #28a745 !important; }
+        .wrong { background-color: #f8d7da !important; border-color: #dc3545 !important; }
+        .check-btn { display: block; width: 200px; margin: 20px auto; padding: 15px; background: #27ae60; color: white; border: none; border-radius: 50px; cursor: pointer; font-size: 16px; font-weight: bold; }
+        .result-msg { text-align: center; font-size: 1.2em; font-weight: bold; margin-top: 15px; }
+    </style>
+</head>
+<body>
+ 
+<h1>Market Leader Intermediate Trainer (100 вопросов)</h1>
+ 
+<div class="tabs">
+    <button class="tab-btn active" onclick="openTab(event, 'test1')">Тест 1: Лексика</button>
+    <button class="tab-btn" onclick="openTab(event, 'test2')">Тест 2: Предлоги</button>
+    <button class="tab-btn" onclick="openTab(event, 'test3')">Тест 3: Грамматика</button>
+    <button class="tab-btn" onclick="openTab(event, 'test4')">Тест 4: Идиомы</button>
+    <button class="tab-btn" onclick="openTab(event, 'test5')">Тест 5: Микс (Units 1-12)</button>
+</div>
+ 
+<!-- ТЕСТ 1: ЛЕКСИКА (20 вопросов) -->
+<div id="test1" class="test-content active">
+    <h2>Тест 1: Бизнес-пары (Collocations)</h2>
+    <div class="q-row"><span class="q-num">1.</span> Brand <input type="text" data-ans="loyalty"> (лояльность)</div>
+    <div class="q-row"><span class="q-num">2.</span> Market <input type="text" data-ans="research"> (исследование)</div>
+    <div class="q-row"><span class="q-num">3.</span> Product <input type="text" data-ans="launch"> (запуск)</div>
+    <div class="q-row"><span class="q-num">4.</span> Target <input type="text" data-ans="audience"> (целевая аудитория)</div>
+    <div class="q-row"><span class="q-num">5.</span> Market <input type="text" data-ans="share"> (доля рынка)</div>
+    <div class="q-row"><span class="q-num">6.</span> Supply and <input type="text" data-ans="demand"> (спрос)</div>
+    <div class="q-row"><span class="q-num">7.</span> Customer <input type="text" data-ans="service"> (поддержка)</div>
+    <div class="q-row"><span class="q-num">8.</span> Human <input type="text" data-ans="resources"> (отдел кадров)</div>
+    <div class="q-row"><span class="q-num">9.</span> Price <input type="text" data-ans="list"> (прайс-лист)</div>
+    <div class="q-row"><span class="q-num">10.</span> Profit <input type="text" data-ans="margin"> (рентабельность)</div>
+    <div class="q-row"><span class="q-num">11.</span> Advertising <input type="text" data-ans="campaign"> (кампания)</div>
+    <div class="q-row"><span class="q-num">12.</span> Business <input type="text" data-ans="trip"> (командировка)</div>
+    <div class="q-row"><span class="q-num">13.</span> Consumer <input type="text" data-ans="behaviour"> (поведение)</div>
+    <div class="q-row"><span class="q-num">14.</span> Trade <input type="text" data-ans="barriers"> (барьеры)</div>
+    <div class="q-row"><span class="q-num">15.</span> Head <input type="text" data-ans="office"> (головной офис)</div>
+    <div class="q-row"><span class="q-num">16.</span> Joint <input type="text" data-ans="venture"> (совместное предприятие)</div>
+    <div class="q-row"><span class="q-num">17.</span> Takeover <input type="text" data-ans="bid"> (предложение о покупке)</div>
+    <div class="q-row"><span class="q-num">18.</span> Decision <input type="text" data-ans="making"> (принятие решений)</div>
+    <div class="q-row"><span class="q-num">19.</span> Cash <input type="text" data-ans="flow"> (денежный поток)</div>
+    <div class="q-row"><span class="q-num">20.</span> Working <input type="text" data-ans="conditions"> (условия труда)</div>
+    <button class="check-btn" onclick="checkTest('test1')">Проверить Тест 1</button>
+    <div class="result-msg" id="res-test1"></div>
+</div>
+ 
+<!-- ТЕСТ 2: ПРЕДЛОГИ (20 вопросов) -->
+<div id="test2" class="test-content">
+    <h2>Тест 2: Предлоги (Prepositions)</h2>
+    <div class="q-row">21. Depend <input type="text" data-ans="on"> (от)</div>
+    <div class="q-row">22. Interested <input type="text" data-ans="in"> (в)</div>
+    <div class="q-row">23. Invest <input type="text" data-ans="in"> (в)</div>
+    <div class="q-row">24. Report <input type="text" data-ans="to"> (кому-то)</div>
+    <div class="q-row">25. Responsible <input type="text" data-ans="for"> (за)</div>
+    <div class="q-row">26. Focus <input type="text" data-ans="on"> (на)</div>
+    <div class="q-row">27. Apologize <input type="text" data-ans="for"> (за что-то)</div>
+    <div class="q-row">28. Complain <input type="text" data-ans="about"> (на что-то)</div>
+    <div class="q-row">29. Apply <input type="text" data-ans="for"> (на работу)</div>
+    <div class="q-row">30. Be good <input type="text" data-ans="at"> (в чем-то)</div>
+    <div class="q-row">31. Succeed <input type="text" data-ans="in"> (в чем-то)</div>
+    <div class="q-row">32. Borrow <input type="text" data-ans="from"> (у кого-то)</div>
+    <div class="q-row">33. Lend <input type="text" data-ans="to"> (кому-то)</div>
+    <div class="q-row">34. Congratulate <input type="text" data-ans="on"> (с чем-то)</div>
+    <div class="q-row">35. Divide <input type="text" data-ans="into"> (разделить на)</div>
+    <div class="q-row">36. Look <input type="text" data-ans="for"> (искать)</div>
+    <div class="q-row">37. Pay <input type="text" data-ans="by"> (картой/чеком)</div>
+    <div class="q-row">38. Pay <input type="text" data-ans="in"> (наличными - cash)</div>
+    <div class="q-row">39. Spend money <input type="text" data-ans="on"> (на)</div>
+    <div class="q-row">40. In charge <input type="text" data-ans="of"> (ответственный за)</div>
+    <button class="check-btn" onclick="checkTest('test2')">Проверить Тест 2</button>
+    <div class="result-msg" id="res-test2"></div>
+</div>
+ 
+<!-- ТЕСТ 3: ГРАММАТИКА (20 вопросов) -->
+<div id="test3" class="test-content">
+    <h2>Тест 3: Грамматика (Tenses & Conditionals)</h2>
+    <div class="q-row">41. At the moment, we <input type="text" data-ans="are working"> (work).</div>
+    <div class="q-row">42. She usually <input type="text" data-ans="manages"> (manage) the team.</div>
+    <div class="q-row">43. Last month, they <input type="text" data-ans="launched"> (launch) the site.</div>
+    <div class="q-row">44. I <input type="text" data-ans="have already seen"> (already/see) the report.</div>
+    <div class="q-row">45. If you <input type="text" data-ans="order"> (order) now, you get a discount.</div>
+    <div class="q-row">46. If I <input type="text" data-ans="were"> (be) you, I'd say no.</div>
+    <div class="q-row">47. Profits <input type="text" data-ans="have risen"> (rise) since January.</div>
+    <div class="q-row">48. The company <input type="text" data-ans="was founded"> (found) in 1990.</div>
+    <div class="q-row">49. We <input type="text" data-ans="are meeting"> (meet) them tomorrow at 10.</div>
+    <div class="q-row">50. Yesterday, I <input type="text" data-ans="met"> (meet) the CEO.</div>
+    <div class="q-row">51. Currently, sales <input type="text" data-ans="are falling"> (fall).</div>
+    <div class="q-row">52. He <input type="text" data-ans="has just left"> (just/leave) the office.</div>
+    <div class="q-row">53. If it <input type="text" data-ans="rains"> (rain), the event will be indoors.</div>
+    <div class="q-row">54. While I <input type="text" data-ans="was waiting"> (wait), I read the news.</div>
+    <div class="q-row">55. They <input type="text" data-ans="have been"> (be) rivals for years.</div>
+    <div class="q-row">56. New laws <input type="text" data-ans="were passed"> (pass) last year.</div>
+    <div class="q-row">57. We <input type="text" data-ans="don't have"> (not/have) any debt now.</div>
+    <div class="q-row">58. <input type="text" data-ans="have you ever been"> (you/ever/be) to China?</div>
+    <div class="q-row">59. I <input type="text" data-ans="am going to study"> (study) tonight.</div>
+    <div class="q-row">60. She <input type="text" data-ans="doesn't work"> (not/work) on Sundays.</div>
+    <button class="check-btn" onclick="checkTest('test3')">Проверить Тест 3</button>
+    <div class="result-msg" id="res-test3"></div>
+</div>
+ 
+<!-- ТЕСТ 4: ИДИОМЫ (20 вопросов) -->
+<div id="test4" class="test-content">
+    <h2>Тест 4: Бизнес-идиомы (Idioms)</h2>
+    <div class="q-row">61. On the same <input type="text" data-ans="wavelength"> (на одной волне)</div>
+    <div class="q-row">62. In the <input type="text" data-ans="black"> (в прибыли)</div>
+    <div class="q-row">63. In the <input type="text" data-ans="red"> (в убытке)</div>
+    <div class="q-row">64. A piece of <input type="text" data-ans="cake"> (очень легко)</div>
+    <div class="q-row">65. Pass the <input type="text" data-ans="buck"> (свалить вину)</div>
+    <div class="q-row">66. Break the <input type="text" data-ans="ice"> (растопить лед)</div>
+    <div class="q-row">67. The bottom <input type="text" data-ans="line"> (итоговая прибыль)</div>
+    <div class="q-row">68. Keep in the <input type="text" data-ans="loop"> (в курсе дел)</div>
+    <div class="q-row">69. A rip-<input type="text" data-ans="off"> (обдираловка)</div>
+    <div class="q-row">70. Get the green <input type="text" data-ans="light"> (получить добро)</div>
+    <div class="q-row">71. Go the extra <input type="text" data-ans="mile"> (сделать больше всех)</div>
+    <div class="q-row">72. A level playing <input type="text" data-ans="field"> (равные условия)</div>
+    <div class="q-row">73. Get a foot in the <input type="text" data-ans="door"> (зацепиться)</div>
+    <div class="q-row">74. Back to square <input type="text" data-ans="one"> (начать с нуля)</div>
+    <div class="q-row">75. Move the <input type="text" data-ans="goalposts"> (менять правила игры)</div>
+    <div class="q-row">76. The elephant in the <input type="text" data-ans="room"> (очевидная проблема)</div>
+    <div class="q-row">77. Call it a <input type="text" data-ans="day"> (закончить работу)</div>
+    <div class="q-row">78. Under the <input type="text" data-ans="weather"> (приболеть)</div>
+    <div class="q-row">79. To be head <input type="text" data-ans="hunted"> (быть переманенным)</div>
+    <div class="q-row">80. See eye to <input type="text" data-ans="eye"> (соглашаться)</div>
+    <button class="check-btn" onclick="checkTest('test4')">Проверить Тест 4</button>
+    <div class="result-msg" id="res-test4"></div>
+</div>
+ 
+<!-- ТЕСТ 5: ГЛАГОЛЫ И МИКС (20 вопросов) -->
+<div id="test5" class="test-content">
+    <h2>Тест 5: Профессиональные глаголы</h2>
+    <div class="q-row">81. To <input type="text" data-ans="downsize"> a company (сократить штат)</div>
+    <div class="q-row">82. To <input type="text" data-ans="outsource"> services (аутсорс)</div>
+    <div class="q-row">83. To <input type="text" data-ans="negotiate"> a price (переговоры)</div>
+    <div class="q-row">84. To <input type="text" data-ans="delegate"> authority (делегировать)</div>
+    <div class="q-row">85. To <input type="text" data-ans="merge"> with a firm (слиться)</div>
+    <div class="q-row">86. To <input type="text" data-ans="recruit"> staff (нанять)</div>
+    <div class="q-row">87. To <input type="text" data-ans="diversify"> (разнообразить бизнес)</div>
+    <div class="q-row">88. To <input type="text" data-ans="subsidize"> (субсидировать)</div>
+    <div class="q-row">89. To <input type="text" data-ans="plummet"> (резко упасть)</div>
+    <div class="q-row">90. To <input type="text" data-ans="soar"> (резко вырасти)</div>
+    <div class="q-row">91. To <input type="text" data-ans="compete"> (конкурировать)</div>
+    <div class="q-row">92. To <input type="text" data-ans="expand"> (расширяться)</div>
+    <div class="q-row">93. To <input type="text" data-ans="implement"> (внедрять/выполнять)</div>
+    <div class="q-row">94. To <input type="text" data-ans="exceed"> (превышать ожидания)</div>
+    <div class="q-row">95. To <input type="text" data-ans="deregulate"> (снять контроль)</div>
+    <div class="q-row">96. To <input type="text" data-ans="acquire"> (поглотить компанию)</div>
+    <div class="q-row">97. To <input type="text" data-ans="fluctuate"> (колебаться)</div>
+    <div class="q-row">98. To <input type="text" data-ans="promote"> (рекламировать)</div>
+    <div class="q-row">99. To <input type="text" data-ans="liquidate"> (ликвидировать)</div>
+    <div class="q-row">100. To <input type="text" data-ans="update"> (обновить)</div>
+    <button class="check-btn" onclick="checkTest('test5')">Проверить Тест 5</button>
+    <div class="result-msg" id="res-test5"></div>
+</div>
+ 
+<script>
+    function openTab(evt, tabName) {
+        let i, content, tabs;
+        content = document.getElementsByClassName("test-content");
+        for (i = 0; i < content.length; i++) { content[i].classList.remove("active"); }
+        tabs = document.getElementsByClassName("tab-btn");
+        for (i = 0; i < tabs.length; i++) { tabs[i].classList.remove("active"); }
+        document.getElementById(tabName).classList.add("active");
+        evt.currentTarget.classList.add("active");
+    }
+ 
+    function checkTest(testId) {
+        const testDiv = document.getElementById(testId);
+        const inputs = testDiv.querySelectorAll('input');
+        let correctCount = 0;
+ 
+        inputs.forEach(input => {
+            const user = input.value.trim().toLowerCase();
+            const correct = input.getAttribute('data-ans').toLowerCase();
+            if (user === correct) {
+                input.className = 'correct';
+                correctCount++;
+            } else {
+                input.className = 'wrong';
+                input.title = "Верно: " + correct;
+            }
+        });
+ 
+        const resMsg = document.getElementById('res-' + testId);
+        resMsg.innerText = "Результат: " + correctCount + " из " + inputs.length;
+        resMsg.style.color = (correctCount === inputs.length) ? "#27ae60" : "#c0392b";
+    }
+</script>
+ 
+</body>
+</html>
