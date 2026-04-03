@@ -2,7 +2,7 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <title>Тренажер по английскому | Nika Titova</title>
+    <title>Тренажер по английскому | Титова Ника Юрьевна</title>
     <style>
         :root { --primary: #1a3a5f; --secondary: #27ae60; --error: #e74c3c; --bg: #f4f7f9; --wiki: #8e44ad; }
         body { font-family: 'Segoe UI', sans-serif; background: var(--bg); margin: 0; padding-bottom: 150px; }
@@ -16,34 +16,24 @@
         .container { max-width: 1050px; margin: 30px auto; padding: 0 20px; }
         .content-box { display: none; background: white; padding: 40px; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.08); }
         .active { display: block !important; }
-        
-        /* Wiki Styles */
         .wiki-section { margin-bottom: 40px; }
-        .wiki-section h3 { color: var(--wiki); border-bottom: 3px solid var(--wiki); padding-bottom: 8px; margin-bottom: 15px; text-transform: uppercase; }
-        .wiki-table { width: 100%; border-collapse: collapse; margin-bottom: 20px; font-size: 0.9em; }
-        .wiki-table th { background: #f8f9fa; padding: 12px; border: 1px solid #dee2e6; text-align: left; }
-        .wiki-table td { padding: 12px; border: 1px solid #dee2e6; vertical-align: top; }
-        .gram-card { background: #fdfdfe; padding: 20px; border-left: 6px solid var(--wiki); border-radius: 10px; margin-bottom: 20px; border: 1px solid #eee; }
-        .marker { color: #d35400; font-weight: bold; background: #fff4e6; padding: 2px 4px; }
-
-        /* Test Styles */
+        .wiki-section h3 { color: var(--wiki); border-bottom: 3px solid var(--wiki); padding-bottom: 8px; margin-bottom: 15px; }
+        .wiki-table { width: 100%; border-collapse: collapse; font-size: 0.9em; margin-bottom: 20px; }
+        .wiki-table th, .wiki-table td { border: 1px solid #dee2e6; padding: 12px; text-align: left; }
+        .wiki-table th { background: #f8f9fa; }
         .q-card { margin-bottom: 30px; padding: 25px; border-radius: 15px; border: 1px solid #eee; background: #fff; }
-        .reading-block { background: #fffbe6; padding: 25px; border-left: 5px solid #ffe58f; border-radius: 10px; margin-bottom: 20px; line-height: 1.7; color: #2c3e50; }
-        .q-text { font-weight: 600; display: block; margin-bottom: 15px; color: #1a3a5f; }
-        input { padding: 12px; border: 2px solid #ddd; border-radius: 8px; width: 300px; font-size: 16px; outline: none; }
+        .reading-block { background: #fffbe6; padding: 25px; border-left: 5px solid #ffe58f; border-radius: 10px; margin-bottom: 20px; line-height: 1.7; color: #2c3e50; font-size: 1.05em; text-align: justify; }
+        input { padding: 12px; border: 2px solid #ddd; border-radius: 8px; width: 320px; font-size: 16px; outline: none; }
         .correct-input { border-color: var(--secondary) !important; background: #f6ffed; }
         .wrong-input { border-color: var(--error) !important; background: #fff1f0; }
         .feedback { display: none; color: var(--error); margin-top: 10px; font-weight: bold; }
-        
-        /* Reading Buttons */
         .reading-btns { display: flex; gap: 10px; margin-top: 10px; }
         .btn-opt { padding: 10px 25px; border: 2px solid #ddd; border-radius: 8px; background: white; cursor: pointer; font-weight: bold; }
-        .btn-opt.selected { background: var(--primary); color: white; border-color: var(--primary); }
-        .btn-opt.correct-opt { background: var(--secondary) !important; color: white; border-color: var(--secondary); }
-        .btn-opt.wrong-opt { background: var(--error) !important; color: white; border-color: var(--error); }
-
+        .btn-opt.selected { background: var(--primary); color: white; }
+        .btn-opt.correct-opt { background: var(--secondary) !important; color: white; }
+        .btn-opt.wrong-opt { background: var(--error) !important; color: white; }
         .controls { position: fixed; bottom: 0; left: 0; right: 0; background: white; padding: 20px; text-align: center; border-top: 3px solid #ddd; z-index: 2000; box-shadow: 0 -5px 15px rgba(0,0,0,0.05); }
-        .btn { padding: 15px 40px; border: none; border-radius: 40px; color: white; font-weight: bold; cursor: pointer; font-size: 18px; margin: 0 15px; transition: 0.3s; }
+        .btn { padding: 15px 40px; border: none; border-radius: 40px; color: white; font-weight: bold; cursor: pointer; font-size: 18px; margin: 0 15px; }
         .check-btn { background: var(--secondary); }
         .reset-btn { background: #636e72; }
     </style>
@@ -56,7 +46,7 @@
 </div>
 
 <div class="tabs">
-    <button class="tab-btn wiki-btn active" onclick="switchTab(event, 'wiki')">📖 ЭНЦИКЛОПЕДИЯ (WIKI)</button>
+    <button class="tab-btn wiki-btn active" onclick="switchTab(event, 'wiki')">📖 БАЗА ЗНАНИЙ (WIKI)</button>
     <button class="tab-btn" onclick="switchTab(event, 'test1')">Лексика (20)</button>
     <button class="tab-btn" onclick="switchTab(event, 'test2')">Предлоги (20)</button>
     <button class="tab-btn" onclick="switchTab(event, 'test3')">Грамматика (20)</button>
@@ -65,62 +55,69 @@
 </div>
 
 <div class="container">
-    <!-- ПОЛНАЯ БАЗА ЗНАНИЙ -->
     <div id="wiki" class="content-box active">
         
-        <section class="wiki-section">
-            <h3>📂 Юниты 1-12: Ключевые выражения</h3>
+        <div class="wiki-section">
+            <h3>1. Business Collocations (Бизнес-сочетания)</h3>
             <table class="wiki-table">
-                <tr><th>Unit</th><th>Выражение (Collocation)</th><th>Перевод / Контекст</th></tr>
-                <tr><td>1. Brands</td><td><b>Brand loyalty / Awareness / Stretching</b></td><td>Верность бренду / Узнаваемость / Растягивание марки</td></tr>
-                <tr><td>2. Travel</td><td><b>Business class / Frequent-flyer points / Itinerary</b></td><td>Бизнес-класс / Бонусные мили / План поездки</td></tr>
-                <tr><td>3. Change</td><td><b>To downsize the workforce / To restructure</b></td><td>Сокращать штат / Реструктурировать</td></tr>
-                <tr><td>4. Org</td><td><b>Subsidiary / Parent company / Flat structure</b></td><td>Дочерняя компания / Материнская / Плоская структура</td></tr>
-                <tr><td>5. Advertising</td><td><b>Target audience / Prime time / Viral campaign</b></td><td>Целевая аудитория / Лучшее время / Вирусная реклама</td></tr>
-                <tr><td>6. Money</td><td><b>Interest rate / Cash flow / Profit margin</b></td><td>Процентная ставка / Денежный поток / Маржа</td></tr>
-                <tr><td>9. Markets</td><td><b>Trade barriers / Tariffs / Quotas / Free trade</b></td><td>Торговые барьеры / Пошлины / Квоты / Свободная торговля</td></tr>
-                <tr><td>12. Comp</td><td><b>Market share / Market leader / Rival company</b></td><td>Доля рынка / Лидер рынка / Компания-конкурент</td></tr>
+                <tr><th>Выражение</th><th>Перевод</th><th>Пример</th></tr>
+                <tr><td><b>Brand loyalty</b></td><td>Верность бренду</td><td>High <b>brand loyalty</b> means customers don't switch.</td></tr>
+                <tr><td><b>Market share</b></td><td>Доля рынка</td><td>We want to increase our <b>market share</b> to 25%.</td></tr>
+                <tr><td><b>Product launch</b></td><td>Запуск продукта</td><td>The <b>product launch</b> is scheduled for next month.</td></tr>
+                <tr><td><b>Takeover bid</b></td><td>Предложение о поглощении</td><td>The company rejected a hostile <b>takeover bid</b>.</td></tr>
+                <tr><td><b>Consumer behaviour</b></td><td>Поведение потребителей</td><td>We study <b>consumer behaviour</b> to sell more.</td></tr>
             </table>
-        </section>
+        </div>
 
-        <section class="wiki-section">
-            <h3>📌 Полный перечень предлогов</h3>
+        <div class="wiki-section">
+            <h3>2. Idioms (Идиомы)</h3>
             <table class="wiki-table">
-                <tr><th>Предлог</th><th>Глаголы и связки</th><th>Перевод</th></tr>
-                <tr><td><b>ON</b></td><td>Depend <b>on</b>, focus <b>on</b>, spend money <b>on</b>, congratulate <b>on</b></td><td>Зависеть от, сфокусироваться на, тратить на</td></tr>
-                <tr><td><b>IN</b></td><td>Invest <b>in</b>, succeed <b>in</b>, result <b>in</b>, interested <b>in</b></td><td>Инвестировать в, преуспеть в, привести к</td></tr>
-                <tr><td><b>FOR</b></td><td>Apply <b>for</b>, apologize <b>for</b>, responsible <b>for</b>, look <b>for</b></td><td>Подать на (работу), извиниться за, отвечать за</td></tr>
-                <tr><td><b>TO</b></td><td>Report <b>to</b>, lend <b>to</b>, adapt <b>to</b>, belong <b>to</b></td><td>Отчитываться перед, давать в долг, адаптироваться к</td></tr>
-                <tr><td><b>WITH</b></td><td>Compete <b>with</b>, deal <b>with</b>, comply <b>with</b>, satisfied <b>with</b></td><td>Конкурировать с, иметь дело с, соблюдать (правила)</td></tr>
-                <tr><td><b>ABOUT</b></td><td>Complain <b>about</b>, worry <b>about</b>, think <b>about</b></td><td>Жаловаться на, беспокоиться о, думать о</td></tr>
-                <tr><td><b>OF</b></td><td>In charge <b>of</b>, aware <b>of</b>, take care <b>of</b></td><td>Быть во главе, быть осведомленным о</td></tr>
+                <tr><th>Идиома</th><th>Перевод</th><th>Значение</th></tr>
+                <tr><td><b>In the red / black</b></td><td>В убытке / В прибыли</td><td>Our company is finally <b>in the black</b>.</td></tr>
+                <tr><td><b>On the same wavelength</b></td><td>На одной волне</td><td>We are <b>on the same wavelength</b> about the project.</td></tr>
+                <tr><td><b>Elephant in the room</b></td><td>Очевидная проблема</td><td>Let's discuss the <b>elephant in the room</b>: our debt.</td></tr>
+                <tr><td><b>Pass the buck</b></td><td>Свалить вину</td><td>Don't <b>pass the buck</b>; it was your responsibility.</td></tr>
+                <tr><td><b>Back to square one</b></td><td>В самое начало</td><td>The merger failed, so we're <b>back to square one</b>.</td></tr>
             </table>
-        </section>
+        </div>
 
-        <section class="wiki-section">
-            <h3>📊 Грамматика & Маркеры времени</h3>
-            <div class="gram-card">
-                <b>Present Simple vs Continuous:</b><br>
-                • Simple (постоянно): V/Vs. <span class="marker">usually, every day, often</span><br>
-                • Continuous (сейчас): am/is/are + Ving. <span class="marker">currently, at the moment, now</span>
-            </div>
-            <div class="gram-card">
-                <b>Past Simple vs Present Perfect:</b><br>
-                • Past Simple (дата): V2/-ed. <span class="marker">yesterday, in 2020, ago, last week</span><br>
-                • Present Perfect (результат): have/has + V3. <span class="marker">just, already, yet, so far, since</span>
-            </div>
-            <div class="gram-card">
-                <b>Conditionals (Условия):</b><br>
-                • 1st (Реально): If + Present Simple, <b>WILL</b> + V1. (If we lower the price, sales will rise).<br>
-                • 2nd (Мечта): If + Past Simple (were), <b>WOULD</b> + V1. (If I were you, I would invest).
-            </div>
-            <div class="gram-card">
-                <b>Passive Voice:</b> am/is/are/was/were + <b>V3/ed</b>. (The report was written yesterday).
-            </div>
-        </section>
+        <div class="wiki-section">
+            <h3>3. Prepositions (Предлоги)</h3>
+            <table class="wiki-table">
+                <tr><th>Глагол + Предлог</th><th>Перевод</th><th>Пример</th></tr>
+                <tr><td><b>Depend ON</b></td><td>Зависеть от</td><td>Success <b>depends on</b> our marketing strategy.</td></tr>
+                <tr><td><b>Invest IN</b></td><td>Инвестировать в</td><td>We need to <b>invest in</b> new technologies.</td></tr>
+                <tr><td><b>Report TO</b></td><td>Отчитываться перед</td><td>I <b>report to</b> the Marketing Director.</td></tr>
+                <tr><td><b>Responsible FOR</b></td><td>Отвечать за</td><td>Who is <b>responsible for</b> the budget?</td></tr>
+                <tr><td><b>Compete WITH</b></td><td>Конкурировать с</td><td>We <b>compete with</b> international firms.</td></tr>
+            </table>
+        </div>
+
+        <div class="wiki-section">
+            <h3>4. Grammar Clues (Грамматика)</h3>
+            <table class="wiki-table">
+                <tr><th>Время / Конструкция</th><th>Маркеры</th><th>Формула</th></tr>
+                <tr><td><b>Present Continuous</b></td><td>currently, now, at the moment</td><td>am/is/are + V-ing</td></tr>
+                <tr><td><b>Past Simple</b></td><td>yesterday, last year, in 2020</td><td>V2 / -ed</td></tr>
+                <tr><td><b>Present Perfect</b></td><td>just, already, yet, since</td><td>have/has + V3</td></tr>
+                <tr><td><b>Conditionals (Type 1)</b></td><td>реальное будущее</td><td>If + Present, Will + V1</td></tr>
+                <tr><td><b>Conditionals (Type 2)</b></td><td>маловероятно (мечта)</td><td>If + Past (were), Would + V1</td></tr>
+            </table>
+        </div>
+
+        <div class="wiki-section">
+            <h3>5. Action Verbs (Бизнес-глаголы)</h3>
+            <table class="wiki-table">
+                <tr><th>Глагол</th><th>Перевод</th><th>Пример</th></tr>
+                <tr><td><b>To downsize</b></td><td>Сокращать штат</td><td>They had to <b>downsize</b> to save costs.</td></tr>
+                <tr><td><b>To negotiate</b></td><td>Вести переговоры</td><td>We need to <b>negotiate</b> a better price.</td></tr>
+                <tr><td><b>To outsource</b></td><td>Отдавать на аутсорс</td><td>We <b>outsource</b> IT services to India.</td></tr>
+                <tr><td><b>To delegate</b></td><td>Делегировать</td><td>A good boss knows how to <b>delegate</b>.</td></tr>
+                <tr><td><b>To merge</b></td><td>Сливаться</td><td>Two banks decided to <b>merge</b>.</td></tr>
+            </table>
+        </div>
     </div>
 
-    <!-- ТЕСТЫ -->
     <div id="quizArea" class="content-box"></div>
 </div>
 
@@ -132,65 +129,65 @@
 
 <script>
 const database = {
-    test1: { title: "Лексика (Юниты 1-12)", questions: [
-        {q: "Market ____ is the percentage of sales a company has in a particular market.", a: "share"},
-        {q: "Building brand ____ means customers keep buying the same brand instead of rivals.", a: "loyalty"},
-        {q: "A hostile ____ bid is an attempt to buy a company against its will.", a: "takeover"},
-        {q: "Market ____ helps companies understand what their customers really want.", a: "research"},
-        {q: "The target ____ for this luxury car is wealthy professionals over 40.", a: "audience"},
-        {q: "The product ____ is scheduled for next July to match the summer season.", a: "launch"},
-        {q: "Profit ____ is the difference between revenue and the cost of production.", a: "margin"},
-        {q: "Human ____ (HR) handles hiring, training and employee welfare.", a: "resources"},
-        {q: "Supply and ____ determine the price of goods in a free market economy.", a: "demand"},
-        {q: "A joint ____ is a business arrangement between two separate firms.", a: "venture"},
-        {q: "Consumer ____ shows how and why people choose to buy certain products.", a: "behaviour"},
-        {q: "Trade ____ like tariffs and quotas restrict imports to protect local producers.", a: "barriers"},
-        {q: "Head ____ is the main administrative center of a large corporation.", a: "office"},
-        {q: "A ____ track record is proof of past success in a particular field.", a: "proven"},
-        {q: "Price ____ is a list showing the cost of all goods and services offered.", a: "list"},
-        {q: "Brand ____ is when a brand name is used for a new category of products.", a: "stretching"},
-        {q: "Market ____ is the company with the highest sales in its industry.", a: "leader"},
-        {q: "A ____ company is a firm that owns several other companies.", a: "parent"},
-        {q: "A ____ is a company that is owned or controlled by another larger firm.", a: "subsidiary"},
-        {q: "Trade ____ are rules that make international trade easier.", a: "regulations"}
+    test1: { title: "Тест 1: Лексика (20 вопросов)", questions: [
+        {q: "Market ____ is the percentage of sales a company has.", a: "share"},
+        {q: "Building brand ____ means customers keep buying the same brand.", a: "loyalty"},
+        {q: "A hostile ____ bid is an attempt to buy a company by force.", a: "takeover"},
+        {q: "Market ____ helps companies understand customer needs.", a: "research"},
+        {q: "The target ____ for this luxury car is wealthy professionals.", a: "audience"},
+        {q: "The product ____ is scheduled for next July.", a: "launch"},
+        {q: "Profit ____ is the difference between revenue and cost.", a: "margin"},
+        {q: "Human ____ (HR) handles hiring and training.", a: "resources"},
+        {q: "Supply and ____ determine the price of goods in a market.", a: "demand"},
+        {q: "A joint ____ is a partnership between two firms.", a: "venture"},
+        {q: "Consumer ____ shows how and why people buy things.", a: "behaviour"},
+        {q: "Trade ____ like tariffs and quotas restrict imports.", a: "barriers"},
+        {q: "Head ____ is the main administrative center of a firm.", a: "office"},
+        {q: "A ____ track record is proof of past success.", a: "proven"},
+        {q: "Price ____ is a list showing costs of goods.", a: "list"},
+        {q: "Brand ____ is when a brand moves to a new category.", a: "stretching"},
+        {q: "Market ____ is the company with the highest sales.", a: "leader"},
+        {q: "A ____ company is a firm that owns other companies.", a: "parent"},
+        {q: "A ____ is a company owned by a larger firm.", a: "subsidiary"},
+        {q: "Trade ____ are rules that make trade easier.", a: "regulations"}
     ]},
-    test2: { title: "Предлоги (Все Юниты)", questions: [
+    test2: { title: "Тест 2: Предлоги (20 вопросов)", questions: [
         {q: "Our future growth depends ____ our ability to innovate.", a: "on"},
         {q: "I report directly ____ the Marketing Director.", a: "to"},
-        {q: "We need to invest more ____ green technologies this year.", a: "in"},
-        {q: "Who is in charge ____ the new recruitment campaign?", a: "of"},
-        {q: "We must focus ____ improving our customer service quality.", a: "on"},
-        {q: "I am interested ____ working in your foreign subsidiary.", a: "in"},
-        {q: "You should apply ____ the job before the Friday deadline.", a: "for"},
-        {q: "We apologize ____ the delay in processing your order.", a: "for"},
-        {q: "Clients often complain ____ the slow response time.", a: "about"},
-        {q: "She is extremely good ____ managing difficult people.", a: "at"},
-        {q: "The manager is responsible ____ the project's total budget.", a: "for"},
-        {q: "Divide the staff ____ three teams for the corporate workshop.", a: "into"},
-        {q: "I prefer to pay ____ credit card for business expenses.", a: "by"},
-        {q: "We spend 10% of our revenue ____ advertising and promotion.", a: "on"},
-        {q: "Can you lend this equipment ____ the IT department?", a: "to"},
-        {q: "Success resulted ____ higher profits for the shareholders.", a: "in"},
-        {q: "They are currently competing ____ several international rivals.", a: "with"},
-        {q: "We need to adapt ____ the changing market conditions.", a: "to"},
-        {q: "The decision depends ____ the results of the research.", a: "on"},
-        {q: "I don't agree ____ your proposal regarding the merger.", a: "with"}
+        {q: "We need to invest more ____ green technologies.", a: "in"},
+        {q: "Who is in charge ____ the recruitment process?", a: "of"},
+        {q: "We must focus ____ improving our customer service.", a: "on"},
+        {q: "I am interested ____ working abroad.", a: "in"},
+        {q: "You should apply ____ the job before Friday.", a: "for"},
+        {q: "We apologize ____ the delay in delivery.", a: "for"},
+        {q: "Clients often complain ____ the slow service.", a: "about"},
+        {q: "She is extremely good ____ managing people.", a: "at"},
+        {q: "The manager is responsible ____ the budget.", a: "for"},
+        {q: "Divide the staff ____ three teams.", a: "into"},
+        {q: "I prefer to pay ____ credit card.", a: "by"},
+        {q: "We spend a lot ____ advertising.", a: "on"},
+        {q: "Lend the equipment ____ the other department.", a: "to"},
+        {q: "Success resulted ____ higher profits.", a: "in"},
+        {q: "They are currently competing ____ several rivals.", a: "with"},
+        {q: "We need to adapt ____ the changing market.", a: "to"},
+        {q: "The decision depends ____ the results.", a: "on"},
+        {q: "I don't agree ____ your proposal.", a: "with"}
     ]},
-    test3: { title: "Грамматика (Tenses & Conditionals)", questions: [
-        {q: "Currently, our engineers ____ (develop) a new prototype for the car.", a: "are developing"},
+    test3: { title: "Тест 3: Грамматика (20 вопросов)", questions: [
+        {q: "Currently, our engineers ____ (develop) a new prototype.", a: "are developing"},
         {q: "Last month, our market share ____ (grow) by 5%.", a: "grew"},
-        {q: "If the bank raises interest rates, we ____ (not/borrow) more money.", a: "will not borrow"},
-        {q: "I ____ (already/see) the sales figures for this quarter.", a: "have already seen"},
-        {q: "If I ____ (be) you, I would accept their offer immediately.", a: "were"},
-        {q: "The company ____ (found) in 1995 by three young engineers.", a: "was founded"},
-        {q: "We ____ (negotiate) this deal since early morning.", a: "have been negotiating"},
-        {q: "Usually, the CEO ____ (manage) all major acquisitions.", a: "manages"},
-        {q: "Yesterday, the new contract ____ (sign) by both parties.", a: "was signed"},
-        {q: "I ____ (not/meet) the candidates for the job last week.", a: "did not meet"},
+        {q: "If the bank raises interest rates, we ____ (not/borrow) more.", a: "will not borrow"},
+        {q: "I ____ (already/see) the sales figures.", a: "have already seen"},
+        {q: "If I ____ (be) you, I would accept their offer.", a: "were"},
+        {q: "The company ____ (found) in 1995.", a: "was founded"},
+        {q: "We ____ (negotiate) since 9 o'clock this morning.", a: "have been negotiating"},
+        {q: "Usually, the CEO ____ (manage) all acquisitions.", a: "manages"},
+        {q: "Yesterday, the contract ____ (sign) by both parties.", a: "was signed"},
+        {q: "I ____ (not/meet) the candidates last week.", a: "did not meet"},
         {q: "Sales ____ (increase) steadily so far this month.", a: "have increased"},
         {q: "While he ____ (travel) to Tokyo, he lost his laptop.", a: "was travelling"},
-        {q: "If they ____ (not/lower) the price, we won't buy the goods.", a: "do not lower"},
-        {q: "He ____ (just/finish) the final presentation for the board.", a: "has just finished"},
+        {q: "If they ____ (not/lower) the price, we won't buy it.", a: "do not lower"},
+        {q: "He ____ (just/finish) the presentation.", a: "has just finished"},
         {q: "New products ____ (launch) every year in January (Passive).", a: "are launched"},
         {q: "At the moment, sales ____ (fall) due to the crisis.", a: "are falling"},
         {q: "I ____ (work) here for ten years now.", a: "have worked"},
@@ -198,39 +195,39 @@ const database = {
         {q: "The decision ____ (make) yesterday afternoon.", a: "was made"},
         {q: "Currently, she ____ (study) for her MBA exams.", a: "is studying"}
     ]},
-    test4: { title: "Идиомы (1-12)", questions: [
+    test4: { title: "Тест 4: Идиомы (20 вопросов)", questions: [
         {q: "We think alike; we are definitely on the same ____.", a: "wavelength"},
         {q: "The business is finally profitable; we are in the ____.", a: "black"},
         {q: "The company has huge debts; it has been in the ____ for years.", a: "red"},
         {q: "The training was very easy; it was a piece of ____.", a: "cake"},
         {q: "Don't pass the ____; you are responsible for this mistake.", a: "buck"},
-        {q: "A joke can help to break the ____ at the start of a meeting.", a: "ice"},
-        {q: "Please keep me in the ____ so I know the project status.", a: "loop"},
+        {q: "A joke can help to break the ____ at meetings.", a: "ice"},
+        {q: "Please keep me in the ____ so I know the status.", a: "loop"},
         {q: "The merger failed, so we are back to square ____.", a: "one"},
         {q: "A low price helps a company to get a foot in the ____.", a: "door"},
-        {q: "The service was terrible and expensive; a total rip-____.", a: "off"},
-        {q: "We finally got the green ____ to start the campaign.", a: "light"},
+        {q: "The service was expensive; a total rip-____.", a: "off"},
+        {q: "We finally got the green ____ to start.", a: "light"},
         {q: "Hardworking employees always go the extra ____.", a: "mile"},
         {q: "We need to talk about the elephant in the ____.", a: "room"},
-        {q: "We need a level playing ____ to compete with giants.", a: "field"},
-        {q: "They never see eye to ____ on marketing strategy.", a: "eye"},
-        {q: "Let's call it a ____; we've worked enough for today.", a: "day"},
-        {q: "I'm feeling under the ____, so I won't come to the office.", a: "weather"},
+        {q: "We need a level playing ____ to compete.", a: "field"},
+        {q: "They never see eye to ____ on anything.", a: "eye"},
+        {q: "Let's call it a ____; we've worked enough.", a: "day"},
+        {q: "I'm feeling under the ____, so I won't come.", a: "weather"},
         {q: "To put it in a ____, the company is bankrupt.", a: "nutshell"},
         {q: "The bottom ____ is that we need to save costs.", a: "line"},
-        {q: "They keep moving the ____, so we can't finish the project.", a: "goalposts"}
+        {q: "They keep moving the ____, so we can't finish.", a: "goalposts"}
     ]},
-    test7: { title: "Reading (10 текстов T/F/NS)", questions: [
-        {text: "Apple Inc. focuses on high brand loyalty and unique design rather than price wars.", q: "Apple reduces prices to compete. (T/F/NS)", a: "f"},
-        {text: "Two major airlines merged to reduce overheads, leading to 5,000 job cuts.", q: "The merger caused job losses. (T/F/NS)", a: "t"},
-        {text: "Zara invests in prime retail locations instead of traditional TV advertising.", q: "Zara spends a lot on TV ads. (T/F/NS)", a: "f"},
-        {text: "Flat structures allow faster communication but can cause confusion in a crisis.", q: "Flat structures are always perfect. (T/F/NS)", a: "f"},
-        {text: "Protectionism uses tariffs to protect local industries from foreign competition.", q: "Protectionism supports local jobs. (T/F/NS)", a: "t"},
-        {text: "Startups often fail due to poor cash flow despite having great products.", q: "Cash flow is vital for startups. (T/F/NS)", a: "t"},
-        {text: "The CEO announced a 10% workforce reduction after three bad quarters.", q: "The company was profitable recently. (T/F/NS)", a: "f"},
-        {text: "Cultural differences can make mergers between US and Japanese firms difficult.", q: "Culture doesn't matter in business. (T/F/NS)", a: "f"},
-        {text: "Many people choose ethical brands even if they have to pay more.", q: "Customers always buy the cheapest. (T/F/NS)", a: "f"},
-        {text: "Remote work increases satisfaction but some fear team cohesion will suffer.", q: "Managers love remote work 100%. (T/F/NS)", a: "ns"}
+    test7: { title: "Тест 5: Reading (10 текстов)", questions: [
+        {text: "Apple Inc. has consistently maintained a premium pricing strategy for its flagship products like the iPhone. While many competitors engage in aggressive price wars to gain market share, Apple focuses on high brand loyalty and unique design. The company has a massive cash flow which allows it to invest heavily in R&D and develop proprietary technology. Analysts believe that their ecosystem of interconnected devices is the key to their long-term success. Even during global economic crises, Apple's sales remain relatively stable compared to other tech giants.", q: "Apple reduces prices significantly to compete with rival firms. (T/F/NS)", a: "f"},
+        {text: "Netflix revolutionized the entertainment industry by shifting from DVD rentals to online streaming. The company invested billions in original content, such as 'Stranger Things', to attract more subscribers worldwide. This strategy helped Netflix become the market leader in the streaming sector for a decade. However, the rise of competitors like Disney+ and HBO Max has recently affected Netflix's market share. To maintain its position, the company is now exploring new revenue streams, including an ad-supported subscription tier and mobile gaming.", q: "Original content was the main factor in Netflix's global growth. (T/F/NS)", a: "t"},
+        {text: "Starbucks is known for its 'Third Place' philosophy, aiming to be the home away from home for its customers. The company uses premium Arabica beans and provides a unique atmosphere in its stores to justify its higher prices. Starbucks has expanded globally, with thousands of subsidiaries in different countries. Despite its success, the brand faces criticism regarding its environmental impact and waste management. In response, Starbucks has committed to reducing its carbon footprint and using more sustainable packaging by 2030.", q: "Starbucks stores provide a cheaper alternative to other coffee shops. (T/F/NS)", a: "f"},
+        {text: "Coca-Cola is a prime example of successful brand stretching and global marketing. The brand is recognized in almost every country, making it one of the most valuable trademarks in history. Coca-Cola manages a complex supply chain to distribute its products to millions of retailers daily. The company's advertising campaigns often focus on emotional connections and universal happiness. However, the increasing global concern over health and sugar consumption has forced the company to diversify its product portfolio with more zero-sugar options and bottled water.", q: "Health concerns have had no impact on Coca-Cola's product strategy. (T/F/NS)", a: "f"},
+        {text: "Tesla, led by Elon Musk, has disrupted the traditional automotive industry with its electric vehicles (EVs). The company does not use traditional dealerships; instead, it sells directly to consumers through its website and showrooms. Tesla's brand awareness is extremely high, despite spending very little on traditional TV or print advertising. The company's focus on sustainable energy and autonomous driving technology attracts a loyal target audience of tech enthusiasts. Tesla's stock price has shown extreme fluctuations, reflecting the volatile nature of the emerging EV market.", q: "Tesla spends billions of dollars on prime-time TV commercials. (T/F/NS)", a: "f"},
+        {text: "Amazon started as an online bookstore but quickly diversified into almost every retail category imaginable. Its focus on customer service and fast delivery through 'Prime' has created a massive competitive advantage. The company's 'flat' organizational structure in its early days allowed for rapid innovation and decision-making. Today, Amazon is not only a retail giant but also a leader in cloud computing through AWS. However, the company often faces legal challenges regarding its market dominance and treatment of warehouse workers.", q: "Amazon's early success was based only on selling physical books. (T/F/NS)", a: "f"},
+        {text: "IKEA changed the furniture industry with its 'ready-to-assemble' concept and warehouse-style stores. This model reduces transportation and storage costs, allowing IKEA to offer lower prices than its competitors. The brand targets budget-conscious families and young professionals moving into new homes. IKEA's store layout is designed to encourage impulse buying as customers walk through various room displays. Recently, IKEA has started opening smaller city-center stores to adapt to changing consumer behaviour and urban living trends.", q: "IKEA's business model relies on high prices and luxury service. (T/F/NS)", a: "f"},
+        {text: "Nike's marketing strategy is built around celebrity endorsements and the 'Just Do It' slogan. By partnering with world-class athletes, Nike has created a powerful brand image associated with performance and success. The company invests heavily in research to develop high-performance footwear and apparel. Nike's market share remains high, but it faces intense competition from brands like Adidas and Under Armour. The company is also moving toward a direct-to-consumer model to increase its profit margins and better understand its customers.", q: "Nike is moving away from selling products through third-party retailers. (T/F/NS)", a: "t"},
+        {text: "McDonald's is the world's largest restaurant chain, operating through a successful franchise model. Most McDonald's restaurants are owned by local entrepreneurs who pay fees to the parent company. This allows McDonald's to expand rapidly with less financial risk. The brand is famous for its standardized menu, ensuring the same quality in Tokyo as in London. In recent years, McDonald's has updated its menu to include healthier options like salads and fruit to meet changing consumer demands.", q: "McDonald's owns and operates every single restaurant in its chain. (T/F/NS)", a: "f"},
+        {text: "The rise of e-commerce has forced many traditional 'bricks-and-mortar' retailers to close down. Companies that failed to invest in digital platforms early enough have struggled to survive. For example, several famous department stores have filed for bankruptcy in the last few years. To stay relevant, remaining retailers are creating 'omnichannel' experiences, combining physical stores with seamless online shopping. This shift requires significant investment in logistics and data analytics to track consumer preferences.", q: "Traditional retailers are completely ignoring the move to online shopping. (T/F/NS)", a: "f"}
     ] }
 };
 
@@ -319,7 +316,7 @@ function checkCurrentTest() {
             if(selected && selected.innerText.toLowerCase() === correctVal) score++;
         }
     });
-    document.getElementById('scoreMsg').innerText = `Ваш результат: ${score} из ${cards.length}`;
+    document.getElementById('scoreMsg').innerText = `Результат: ${score} из ${cards.length}`;
 }
 
 function resetCurrentTest() { renderTest(); }
