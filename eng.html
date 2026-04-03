@@ -2,210 +2,251 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <title>Market Leader PRO + Wiki</title>
+    <title>Market Leader PRO | Developer: Nika Titova</title>
     <style>
         :root { --primary: #1a3a5f; --secondary: #27ae60; --error: #e74c3c; --bg: #f4f7f9; --wiki: #8e44ad; }
-        body { font-family: 'Segoe UI', sans-serif; background: var(--bg); margin: 0; padding-bottom: 120px; }
+        body { font-family: 'Segoe UI', sans-serif; background: var(--bg); margin: 0; padding-bottom: 150px; }
         
-        /* Шапка с именем разработчика */
-        .header { background: var(--primary); color: white; padding: 20px 15px; text-align: center; position: sticky; top: 0; z-index: 1000; box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
-        .header h2 { margin: 0; font-size: 1.5em; letter-spacing: 1px; }
-        .developer { font-size: 0.9em; margin-top: 8px; opacity: 0.9; font-weight: 300; font-style: italic; }
- 
-        .tabs { display: flex; overflow-x: auto; background: #fff; padding: 10px; gap: 8px; position: sticky; top: 95px; z-index: 999; border-bottom: 2px solid #ddd; justify-content: center; }
-        .tab-btn { padding: 8px 15px; cursor: pointer; border: 2px solid var(--primary); background: white; color: var(--primary); border-radius: 20px; font-weight: bold; white-space: nowrap; font-size: 13px; transition: 0.3s; }
+        .header { background: var(--primary); color: white; padding: 20px; text-align: center; position: sticky; top: 0; z-index: 1100; box-shadow: 0 4px 12px rgba(0,0,0,0.2); }
+        .developer { font-size: 0.9em; margin-top: 8px; font-style: italic; opacity: 0.9; }
+
+        .tabs { display: flex; overflow-x: auto; background: #fff; padding: 10px; gap: 8px; position: sticky; top: 95px; z-index: 1050; border-bottom: 2px solid #ddd; justify-content: center; }
+        .tab-btn { padding: 10px 18px; cursor: pointer; border: 2px solid var(--primary); background: white; color: var(--primary); border-radius: 25px; font-weight: bold; white-space: nowrap; transition: 0.3s; }
         .tab-btn.active { background: var(--primary); color: white; }
         .tab-btn.wiki-btn { border-color: var(--wiki); color: var(--wiki); }
         .tab-btn.wiki-btn.active { background: var(--wiki); color: white; }
- 
-        .container { max-width: 900px; margin: 20px auto; padding: 0 20px; }
-        .test-content, .wiki-content { display: none; background: white; padding: 30px; border-radius: 15px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); }
+
+        .container { max-width: 950px; margin: 30px auto; padding: 0 20px; }
+        .content-box { display: none; background: white; padding: 40px; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.08); }
         .active { display: block !important; }
-        
-        .q-card { margin-bottom: 25px; padding-bottom: 15px; border-bottom: 1px solid #eee; }
-        .reading-text { background: #f9f9f9; padding: 15px; border-left: 4px solid var(--primary); margin-bottom: 15px; font-style: italic; font-size: 0.95em; }
-        
-        input { padding: 10px 12px; border: 2px solid #ddd; border-radius: 8px; width: 240px; font-size: 16px; outline: none; transition: 0.3s; }
-        .correct-input { border-color: var(--secondary) !important; background: #eafff0; }
-        .wrong-input { border-color: var(--error) !important; background: #fff0f0; }
-        
-        .feedback { display: none; font-size: 0.9em; color: var(--error); margin-top: 5px; font-weight: bold; }
-        
-        .controls { position: fixed; bottom: 0; left: 0; right: 0; background: white; padding: 15px; display: flex; justify-content: center; gap: 20px; border-top: 2px solid #ddd; z-index: 1001; }
-        .btn { padding: 12px 35px; border: none; border-radius: 30px; color: white; font-weight: bold; cursor: pointer; font-size: 16px; transition: 0.2s; }
-        .check-btn { background: var(--secondary); }
-        .reset-btn { background: #7f8c8d; }
-        .btn:hover { opacity: 0.9; transform: translateY(-2px); }
- 
+
         /* База знаний */
-        .wiki-section { margin-bottom: 35px; }
-        .wiki-section h3 { color: var(--wiki); border-bottom: 2px solid #f0f0f0; padding-bottom: 8px; margin-bottom: 15px; }
-        .wiki-table { width: 100%; border-collapse: collapse; }
-        .wiki-table th, .wiki-table td { border: 1px solid #eee; padding: 12px; text-align: left; }
-        .wiki-table th { background: #f8f9fa; font-size: 0.9em; text-transform: uppercase; color: #777; }
-        .gram-box { background: #f0f4f8; padding: 15px; border-radius: 10px; margin-top: 15px; border-left: 4px solid var(--wiki); }
+        .wiki-header { color: var(--wiki); border-bottom: 3px solid var(--wiki); padding-bottom: 10px; margin-bottom: 30px; }
+        .wiki-section { margin-bottom: 40px; }
+        .wiki-table { width: 100%; border-collapse: collapse; margin-bottom: 20px; font-size: 0.95em; }
+        .wiki-table th { background: #f8f9fa; padding: 12px; border: 1px solid #dee2e6; text-align: left; color: #444; }
+        .wiki-table td { padding: 12px; border: 1px solid #dee2e6; vertical-align: top; }
+        .gram-card { background: #f0f4f8; padding: 20px; border-radius: 12px; border-left: 5px solid var(--wiki); margin-bottom: 15px; }
+
+        /* Тесты */
+        .q-card { margin-bottom: 30px; padding: 20px; border-radius: 10px; border: 1px solid #eee; transition: 0.3s; }
+        .q-card:hover { border-color: var(--primary); }
+        .reading-block { background: #fffbe6; padding: 20px; border: 1px solid #ffe58f; border-radius: 8px; margin-bottom: 15px; font-size: 1.05em; line-height: 1.6; color: #333; }
+        .q-text { font-weight: 600; display: block; margin-bottom: 12px; color: #2c3e50; }
+        
+        input { padding: 12px; border: 2px solid #ddd; border-radius: 8px; width: 260px; font-size: 16px; outline: none; }
+        .correct-input { border-color: var(--secondary) !important; background: #f6ffed; }
+        .wrong-input { border-color: var(--error) !important; background: #fff1f0; }
+        
+        .feedback { display: none; color: var(--error); margin-top: 8px; font-weight: bold; font-size: 0.9em; }
+        
+        /* Панель управления */
+        .controls { position: fixed; bottom: 0; left: 0; right: 0; background: white; padding: 20px; display: flex; flex-direction: column; align-items: center; border-top: 3px solid #ddd; z-index: 2000; }
+        .btn-row { display: flex; gap: 20px; }
+        .btn { padding: 14px 40px; border: none; border-radius: 35px; color: white; font-weight: bold; cursor: pointer; font-size: 17px; transition: 0.3s; }
+        .check-btn { background: var(--secondary); box-shadow: 0 4px 14px rgba(39, 174, 96, 0.4); }
+        .reset-btn { background: #636e72; }
+        .score-display { margin-top: 10px; font-size: 1.2em; font-weight: bold; color: var(--primary); display: none; }
     </style>
 </head>
 <body>
- 
+
 <div class="header">
-    <h2>Market Leader: Intermediate PRO</h2>
+    <h2>Market Leader Intermediate: Exam PRO</h2>
     <div class="developer">Разработчик: Титова Ника Юрьевна</div>
 </div>
- 
-<div class="tabs" id="tabContainer">
-    <button class="tab-btn wiki-btn" onclick="switchTab(event, 'wiki')">📖 БАЗА ЗНАНИЙ</button>
-    <button class="tab-btn active" onclick="switchTab(event, 'test1')">1. Лексика</button>
-    <button class="tab-btn" onclick="switchTab(event, 'test2')">2. Предлоги</button>
-    <button class="tab-btn" onclick="switchTab(event, 'test3')">3. Грамматика</button>
-    <button class="tab-btn" onclick="switchTab(event, 'test4')">4. Идиомы</button>
-    <button class="tab-btn" onclick="switchTab(event, 'test7')">5. Чтение (T/F/NS)</button>
+
+<div class="tabs">
+    <button class="tab-btn wiki-btn active" onclick="switchTab(event, 'wiki')">📖 БАЗА ЗНАНИЙ (WIKI)</button>
+    <button class="tab-btn" onclick="switchTab(event, 'test1')">Лексика</button>
+    <button class="tab-btn" onclick="switchTab(event, 'test2')">Предлоги</button>
+    <button class="tab-btn" onclick="switchTab(event, 'test3')">Грамматика</button>
+    <button class="tab-btn" onclick="switchTab(event, 'test4')">Идиомы</button>
+    <button class="tab-btn" onclick="switchTab(event, 'test7')">Чтение (T/F/NS)</button>
 </div>
- 
+
 <div class="container">
     <!-- БАЗА ЗНАНИЙ -->
-    <div id="wiki" class="wiki-content">
-        <h1>Справочник студента (Units 1-12)</h1>
+    <div id="wiki" class="content-box active">
+        <h1 class="wiki-header">Полный справочник студента</h1>
         
         <div class="wiki-section">
-            <h3>🔑 Ключевые термины (Business Collocations)</h3>
+            <h3>1. Ключевые термины (Business Vocabulary)</h3>
             <table class="wiki-table">
-                <tr><th>Термин</th><th>Значение и пример</th></tr>
-                <tr><td><b>Market share</b></td><td>Доля рынка. <i>"We aim to increase our market share."</i></td></tr>
-                <tr><td><b>Brand loyalty</b></td><td>Лояльность. Повторные покупки одной марки.</td></tr>
-                <tr><td><b>Takeover bid</b></td><td>Предложение о покупке другой компании.</td></tr>
-                <tr><td><b>Profit margin</b></td><td>Рентабельность. Процент чистой прибыли.</td></tr>
-                <tr><td><b>Outsourcing</b></td><td>Передача функций (IT, поддержка) внешним подрядчикам.</td></tr>
-                <tr><td><b>Joint venture</b></td><td>Совместное предприятие двух разных компаний.</td></tr>
+                <tr><th>Юнит / Тема</th><th>Термин</th><th>Значение</th></tr>
+                <tr><td>Unit 1: Brands</td><td><b>Brand loyalty</b></td><td>Преданность клиентов одной марке.</td></tr>
+                <tr><td>Unit 3: Change</td><td><b>Downsizing</b></td><td>Сокращение штата компании для снижения расходов.</td></tr>
+                <tr><td>Unit 4: Org</td><td><b>Hierarchy</b></td><td>Система управления сверху вниз (иерархия).</td></tr>
+                <tr><td>Unit 6: Money</td><td><b>Cash flow</b></td><td>Движение денег (приход и расход).</td></tr>
+                <tr><td>Unit 9: Markets</td><td><b>Trade barriers</b></td><td>Барьеры: пошлины (tariffs) и квоты (quotas).</td></tr>
+                <tr><td>Unit 12: Comp</td><td><b>Market share</b></td><td>Доля рынка, которую занимает компания.</td></tr>
             </table>
         </div>
- 
+
         <div class="wiki-section">
-            <h3>🗣️ Бизнес-идиомы</h3>
+            <h3>2. Управление предлогами (Prepositions)</h3>
             <table class="wiki-table">
-                <tr><th>Идиома</th><th>Значение (для экзамена)</th></tr>
-                <tr><td><b>In the red / black</b></td><td>Убыток (минус) / Прибыль (плюс).</td></tr>
-                <tr><td><b>Elephant in the room</b></td><td>Очевидная проблема, о которой молчат.</td></tr>
-                <tr><td><b>Get the green light</b></td><td>Получить официальное разрешение на проект.</td></tr>
-                <tr><td><b>Back to square one</b></td><td>Начать всё с чистого листа после провала.</td></tr>
-                <tr><td><b>On the same wavelength</b></td><td>Полное взаимопонимание с коллегой/партнером.</td></tr>
+                <tr><td><b>Depend ON</b></td><td>Зависеть от чего-то.</td><td><i>It depends on the price.</i></td></tr>
+                <tr><td><b>Invest IN</b></td><td>Инвестировать в.</td><td><i>Invest in new technology.</i></td></tr>
+                <tr><td><b>Report TO</b></td><td>Отчитываться перед кем-то.</td><td><i>I report to the CEO.</i></td></tr>
+                <tr><td><b>In charge OF</b></td><td>Быть ответственным за.</td><td><i>In charge of marketing.</i></td></tr>
+                <tr><td><b>Focus ON</b></td><td>Фокусироваться на.</td><td><i>Focus on the target audience.</i></td></tr>
             </table>
         </div>
- 
+
         <div class="wiki-section">
-            <h3>📊 Грамматический минимум</h3>
-            <div class="gram-box">
-                <b>Present Perfect vs Past Simple:</b><br>
-                Используй <b>Past Simple</b> (2-я форма), если есть дата: <i>in 2022, last month</i>.<br>
-                Используй <b>Present Perfect</b> (have + 3-я форма), если важен результат: <i>just, already, since</i>.
+            <h3>3. Грамматическая шпаргалка</h3>
+            <div class="gram-card">
+                <b>Present Simple vs Continuous:</b><br>
+                • Simple (всегда): <i>"We <b>sell</b> cars."</i> (Маркеры: usually, every day).<br>
+                • Continuous (сейчас): <i>"We <b>are selling</b> more now."</i> (Маркеры: currently, at the moment).
             </div>
-            <div class="gram-box">
+            <div class="gram-card">
                 <b>Conditionals (Условные):</b><br>
-                <b>Type 1 (Реально):</b> If + Present Simple, WILL + глагол.<br>
-                <b>Type 2 (Мечта):</b> If + Past Simple (were), WOULD + глагол.
+                • <b>Type 1 (Real):</b> <i>If + Present, WILL + глагол</i> (If we cut prices, we will sell more).<br>
+                • <b>Type 2 (Unreal):</b> <i>If + Past (were), WOULD + глагол</i> (If I were you, I would quit).
             </div>
         </div>
     </div>
- 
-    <!-- Область тестов -->
-    <div id="quizArea" class="test-content"></div>
+
+    <!-- ТЕСТОВАЯ ОБЛАСТЬ -->
+    <div id="quizArea" class="content-box"></div>
 </div>
- 
+
 <div class="controls" id="controlPanel" style="display:none;">
-    <button class="btn reset-btn" onclick="resetCurrentTest()">Сбросить всё</button>
-    <button class="btn check-btn" onclick="checkCurrentTest()">Проверить ответы</button>
+    <div class="btn-row">
+        <button class="btn reset-btn" onclick="resetCurrentTest()">Сбросить всё</button>
+        <button class="btn check-btn" onclick="checkCurrentTest()">Проверить ответы</button>
+    </div>
+    <div id="scoreMsg" class="score-display"></div>
 </div>
- 
+
 <script>
 const database = {
-    test1: { title: "Лексика (Collocations)", questions: [
-        {q: "The company's market ____ dropped after the rival's launch.", a: "share"},
-        {q: "We need brand ____ to survive in this competitive sector.", a: "loyalty"},
-        {q: "The board rejected the hostile ____ bid.", a: "takeover"},
-        {q: "The product ____ is scheduled for next September.", a: "launch"},
-        {q: "Our target ____ consists of professionals aged 25-40.", a: "audience"}
+    test1: { title: "Лексика (15 вопросов)", questions: [
+        {q: "Market ____ is the percentage of sales a company has.", a: "share"},
+        {q: "Building brand ____ means customers keep buying your mark.", a: "loyalty"},
+        {q: "A hostile ____ bid is when a company tries to buy another against its will.", a: "takeover"},
+        {q: "Companies use market ____ to find out what customers want.", a: "research"},
+        {q: "Our target ____ is young urban professionals.", a: "audience"},
+        {q: "The product ____ is scheduled for next spring.", a: "launch"},
+        {q: "Profit ____ is the difference between cost and price.", a: "margin"},
+        {q: "Supply and ____ determine the price in a free market.", a: "demand"},
+        {q: "Human ____ (HR) is responsible for hiring staff.", a: "resources"},
+        {q: "Outsourcing helps to reduce ____ costs.", a: "overhead"},
+        {q: "A joint ____ is a partnership between two companies.", a: "venture"},
+        {q: "We need to update our ____ list for the new season.", a: "price"},
+        {q: "The head ____ is located in New York.", a: "office"},
+        {q: "Consumer ____ shows how people shop.", a: "behaviour"},
+        {q: "Trade ____ like tariffs make imports expensive.", a: "barriers"}
     ]},
-    test2: { title: "Предлоги (Prepositions)", questions: [
-        {q: "Success depends ____ the quality of our service.", a: "on"},
-        {q: "He is responsible ____ the marketing budget.", a: "for"},
-        {q: "I report directly ____ the CEO.", a: "to"},
-        {q: "We are interested ____ expanding to Europe.", a: "in"},
-        {q: "She is in charge ____ the recruitment process.", a: "of"}
+    test2: { title: "Предлоги (15 вопросов)", questions: [
+        {q: "Success depends ____ hard work.", a: "on"},
+        {q: "I report ____ the Sales Manager.", a: "to"},
+        {q: "We invest millions ____ R&D.", a: "in"},
+        {q: "He is in charge ____ the project.", a: "of"},
+        {q: "Focus ____ your main goals.", a: "on"},
+        {q: "I am interested ____ this offer.", a: "in"},
+        {q: "Apply ____ a job online.", a: "for"},
+        {q: "Apologize ____ the delay.", a: "for"},
+        {q: "Complain ____ the service.", a: "about"},
+        {q: "He is good ____ negotiations.", a: "at"},
+        {q: "Responsible ____ the budget.", a: "for"},
+        {q: "Divide the team ____ groups.", a: "into"},
+        {q: "Pay ____ credit card.", a: "by"},
+        {q: "Spend money ____ marketing.", a: "on"},
+        {q: "Lend money ____ a friend.", a: "to"}
     ]},
-    test3: { title: "Грамматика (Tenses)", questions: [
-        {q: "Currently, our team ____ (develop) a new strategy.", a: "is developing"},
-        {q: "The company ____ (found) in 1990 by three brothers.", a: "was founded"},
-        {q: "If we increase the price, we ____ (lose) customers.", a: "will lose"},
-        {q: "Since 2020, profits ____ (rise) by 20%.", a: "have risen"},
-        {q: "If I ____ (be) you, I would take the job.", a: "were"}
+    test3: { title: "Грамматика (15 вопросов)", questions: [
+        {q: "Currently, we ____ (work) on a deal.", a: "are working"},
+        {q: "Last year, profits ____ (fall).", a: "fell"},
+        {q: "If we lower prices, we ____ (sell) more.", a: "will sell"},
+        {q: "I ____ (already/finish) my work.", a: "have already finished"},
+        {q: "If I ____ (be) you, I'd go.", a: "were"},
+        {q: "The firm ____ (found) in 1990.", a: "was founded"},
+        {q: "They ____ (negotiate) since morning.", a: "have been negotiating"},
+        {q: "Usually, she ____ (travel) by car.", a: "travels"},
+        {q: "Next week, we ____ (meet) the board.", a: "are meeting"},
+        {q: "I ____ (not/see) him yesterday.", a: "did not see"},
+        {q: "Sales ____ (increase) recently.", a: "have increased"},
+        {q: "While I ____ (wait), I read a book.", a: "was waiting"},
+        {q: "If they ____ (not/help), we will fail.", a: "do not help"},
+        {q: "He ____ (just/leave) the office.", a: "has just left"},
+        {q: "The report ____ (write) by me yesterday.", a: "was written"}
     ]},
-    test4: { title: "Идиомы (Idioms)", questions: [
-        {q: "We are finally in the ____ (в прибыли).", a: "black"},
-        {q: "Don't pass the ____ (свалить вину) to your assistant.", a: "buck"},
-        {q: "Let's keep everyone in the ____ (в курсе).", a: "loop"},
-        {q: "We had to start again from square ____ (с начала).", a: "one"},
-        {q: "A joke can help to break the ____ (растопить лед).", a: "ice"}
+    test4: { title: "Идиомы (15 вопросов)", questions: [
+        {q: "On the same ____ (wavelength).", a: "wavelength"},
+        {q: "In the ____ (profit).", a: "black"},
+        {q: "In the ____ (loss).", a: "red"},
+        {q: "Piece of ____ (easy).", a: "cake"},
+        {q: "Pass the ____ (blame).", a: "buck"},
+        {q: "Break the ____ (ice).", a: "ice"},
+        {q: "Keep in the ____ (loop).", a: "loop"},
+        {q: "Back to square ____ (start).", a: "one"},
+        {q: "Get a foot in the ____ (door).", a: "door"},
+        {q: "A rip-____ (expensive).", a: "off"},
+        {q: "Green ____ (permission).", a: "light"},
+        {q: "Extra ____ (mile).", a: "mile"},
+        {q: "Elephant in the ____ (room).", a: "room"},
+        {q: "Level playing ____ (field).", a: "field"},
+        {q: "See eye to ____ (eye).", a: "eye"}
     ]},
-    test7: { title: "Чтение (T / F / NS)", questions: [
-        {text: "Nokia was the market leader for years but failed to adapt to the smartphone era.", q: "Nokia adapted quickly to new technology. (T/F/NS)", a: "f"},
-        {text: "Apple maintains high prices but brand loyalty remains very strong.", q: "Apple customers are generally loyal. (T/F/NS)", a: "t"},
-        {text: "Mergers and acquisitions often lead to workforce downsizing to save costs.", q: "Downsizing is always bad for the company. (T/F/NS)", a: "ns"}
+    test7: { title: "Чтение (5 текстов T/F/NS)", questions: [
+        {text: "Text A: Global brand Zara avoids traditional advertising. Instead, they invest heavily in prime retail locations. This strategy allows them to react quickly to fashion trends and keep costs relatively low.", q: "Zara spends a lot of money on TV commercials. (T/F/NS)", a: "f"},
+        {text: "Text B: Acquisitions can be difficult for employees. When a larger company buys a smaller one, it often results in downsizing to remove duplicate roles. However, it can also lead to new career opportunities.", q: "Acquisitions always lead to new job openings. (T/F/NS)", a: "f"},
+        {text: "Text C: Many tech startups fail in their first year because of poor cash flow. Even with a great product, if a company cannot pay its bills, it will go bankrupt very quickly.", q: "Cash flow problems are a common reason for startup failure. (T/F/NS)", a: "t"},
+        {text: "Text D: Remote work has become a standard in the IT industry. Companies report higher employee satisfaction, though some managers worry about team cohesion in the long run.", q: "Managers are 100% happy with remote work. (T/F/NS)", a: "f"},
+        {text: "Text E: Ethical consumerism is on the rise. More people are choosing to buy from brands that use sustainable materials, even if they have to pay a premium price.", q: "Customers never pay more for eco-friendly products. (T/F/NS)", a: "f"}
     ]}
 };
- 
+
 let currentTab = 'wiki';
- 
+
 function switchTab(evt, tabId) {
     currentTab = tabId;
-    document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
     evt.currentTarget.classList.add('active');
- 
-    const quizArea = document.getElementById('quizArea');
-    const wiki = document.getElementById('wiki');
-    const controls = document.getElementById('controlPanel');
- 
-    if (tabId === 'wiki') {
-        wiki.classList.add('active');
-        quizArea.classList.remove('active');
-        controls.style.display = 'none';
+
+    if(tabId === 'wiki') {
+        document.getElementById('wiki').classList.add('active');
+        document.getElementById('quizArea').classList.remove('active');
+        document.getElementById('controlPanel').style.display = 'none';
     } else {
-        wiki.classList.remove('active');
-        quizArea.classList.add('active');
-        controls.style.display = 'flex';
-        renderQuiz(tabId);
+        document.getElementById('wiki').classList.remove('active');
+        document.getElementById('quizArea').classList.add('active');
+        document.getElementById('controlPanel').style.display = 'flex';
+        renderTest();
     }
 }
- 
-function renderQuiz(tabId) {
+
+function renderTest() {
     const area = document.getElementById('quizArea');
-    area.innerHTML = `<h2 style="color:var(--primary)">${database[tabId].title}</h2>`;
+    area.innerHTML = `<h2>Раздел: ${database[currentTab].title}</h2>`;
+    const shuffled = [...database[currentTab].questions].sort(() => Math.random() - 0.5);
     
-    // Перемешивание вопросов
-    const shuffled = [...database[tabId].questions].sort(() => Math.random() - 0.5);
- 
     shuffled.forEach((item, i) => {
-        const div = document.createElement('div');
-        div.className = 'q-card';
-        div.innerHTML = `
-            ${item.text ? `<div class="reading-text">${item.text}</div>` : ''}
+        const card = document.createElement('div');
+        card.className = 'q-card';
+        card.innerHTML = `
+            ${item.text ? `<div class="reading-block">${item.text}</div>` : ''}
             <span class="q-text">${i+1}. ${item.q}</span>
-            <input type="text" class="q-input" data-ans="${item.a}" placeholder="Введите ответ...">
-            <div class="feedback">Правильно: ${item.a.toUpperCase()}</div>
+            <input type="text" class="q-input" data-ans="${item.a}">
+            <div class="feedback">Верный ответ: ${item.a.toUpperCase()}</div>
         `;
-        area.appendChild(div);
+        area.appendChild(card);
     });
+    document.getElementById('scoreMsg').style.display = 'none';
 }
- 
+
 function checkCurrentTest() {
     const inputs = document.querySelectorAll('.q-input');
     const feedbacks = document.querySelectorAll('.feedback');
     let correct = 0;
- 
+
     inputs.forEach((input, i) => {
-        const userAns = input.value.trim().toLowerCase();
-        constcorrectAns = input.getAttribute('data-ans').toLowerCase();
-        
-        if (userAns === correctAns) {
+        const user = input.value.trim().toLowerCase();
+        const ans = input.getAttribute('data-ans').toLowerCase();
+        if (user === ans) {
             input.className = 'q-input correct-input';
             feedbacks[i].style.display = 'none';
             correct++;
@@ -214,18 +255,13 @@ function checkCurrentTest() {
             feedbacks[i].style.display = 'block';
         }
     });
-    alert(`Ваш результат: ${correct} из ${inputs.length}`);
+
+    const scoreMsg = document.getElementById('scoreMsg');
+    scoreMsg.style.display = 'block';
+    scoreMsg.innerText = `Ваш результат: ${correct} из ${inputs.length}`;
 }
- 
-function resetCurrentTest() {
-    renderQuiz(currentTab);
-}
- 
-// Запуск по умолчанию
-window.onload = () => {
-    document.getElementById('wiki').classList.add('active');
-};
+
+function resetCurrentTest() { renderTest(); }
 </script>
- 
 </body>
 </html>
